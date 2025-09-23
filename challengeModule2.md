@@ -121,7 +121,8 @@ hacker@paths~home-sweet-home:~$
 
   
 ## What I learned
-explain what you learned
+In this module I learned about the filesystem in Linux and the ways to change and view the directories. I also learned about absolute path and relative path and to run programs using such paths.I also learned about the anchor(root) and how to access a particular file with its path.
 
 ## References 
-Add any references or videos u used while solving the challenge.
+pwn.college video
+https://www.youtube.com/watch?list=PL-ymxv0nOtqqRAz1x90vxNbhmSkeYxHVC&v=b67Jq6IZ3U8
