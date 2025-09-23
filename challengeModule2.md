@@ -98,7 +98,7 @@ hacker@paths~explicit-relative-paths-from-:/$
 ```
 ### Challenge 8:
   **Flag**  pwn.college{IESkjOO__A-ruad9QzHSOOrgmqV.QXxUTN0wyM0AzNzEzW}
-  Here we are running a command to invoke a program from within the directory using relative path and . symbol.
+  Here we are running a command to invoke a program from within the directory using relative path and . symbol. This helps me to run the program (run) which is already in the challenge directory without exiting the directory. The dot symbol stands for current directory.
  ``` 
 hacker@paths~implicit-relative-path:~$ cd /challenge
 hacker@paths~implicit-relative-path:/challenge$ ./run
