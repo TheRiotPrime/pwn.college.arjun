@@ -1,4 +1,4 @@
-# Hello Hackers- Linux Luminarium
+# Linux Luminarium- Hello Hackers
 The challenge helps you get familiar with the command line and a few basic commands.
 
 ## My solve
