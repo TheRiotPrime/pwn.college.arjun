@@ -100,6 +100,46 @@ hacker@globbing~exclusionary-globbing:/challenge/files$
 ## What I learned
 The use of ! in glob
 
+### Challenge 8:
+  **Flag**  pwn.college{g6Zn-sjhpXOuP7zpL_m9Pq6Oayq.0FN0EzNxwyM0AzNzEzW}
+Using the tab key to complete a filename instead of typing it full.
+ ``` 
+hacker@globbing~tab-completion:~$ cd /challenge
+hacker@globbing~tab-completion:/challenge$ ls
+DESCRIPTION.md  pwncollege​
+hacker@globbing~tab-completion:/challenge$ cat pwncollege​ 
+pwn.college{g6Zn-sjhpXOuP7zpL_m9Pq6Oayq.0FN0EzNxwyM0AzNzEzW}
+hacker@globbing~tab-completion:/challenge$ 
+```
+## What I learned
+Using the tab key instead of * to avoid accidental file calls.
+
+### Challenge 9:
+  **Flag**  pwn.college{QiaGMPb7jWHFlX9A2gGv2DCjCXc.0lN0EzNxwyM0AzNzEzW}
+Here we are using the tab key to complete the name of the file and we use it twice to see the whole list of files matching the pattern in case there are multiple files.
+ ``` 
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwn
+pwn                    pwn-the-planet         pwncollege-flag        pwncollege-flyswatter  
+pwn-college            pwncollege-family      pwncollege-flamingo    pwncollege-hacking     
+hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwncollege-flag
+pwn.college{QiaGMPb7jWHFlX9A2gGv2DCjCXc.0lN0EzNxwyM0AzNzEzW}
+hacker@globbing~multiple-options-for-tab-completion:~$ 
+```
+## What I learned
+The use of tab key to list muiltiple possible file names. 
+
+### Challenge 10:
+  **Flag**  pwn.college{ENvdfF844YCfKsRlhzRxht-dtSM.0VN0EzNxwyM0AzNzEzW}
+Here we are using the tab key to complete a command. The tab key can be used to complete not just file names but also on commands.
+ ``` 
+hacker@globbing~tab-completion-on-commands:~$ pwncollege-1444 
+Correct! Here is your flag:
+pwn.college{ENvdfF844YCfKsRlhzRxht-dtSM.0VN0EzNxwyM0AzNzEzW}
+hacker@globbing~tab-completion-on-commands:~$
+```
+## What I learned
+To use tab key to complete commands
+
 ## References
 None
 
