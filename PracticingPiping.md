@@ -252,103 +252,14 @@ hacker@piping~duplicating-piped-data-with-tee:~$
 ## What I learned
 To use the tee attribute while piping.
 
-### Challenge 10:
-  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
+### Challenge 11:
+  **Flag**  pwn.college{Eh46G_zi-lJ6FSFjvMFWzebmk8-.0lNwMDOxwyM0AzNzEzW}
+Here we are using the diff command with the outputs which are considered as files using the <(command)  attribute.
  ``` 
-hacker@piping~duplicating-piped-data-with-tee:~$ touch file
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
-Processing...
-WARNING: you are overwriting file file with tee's output...
-The input to 'college' does not contain the correct secret code! This code 
-should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
-output of 'pwn' and figure out what the code needs to be.
-hacker@piping~duplicating-piped-data-with-tee:~$ cat file
-Usage: /challenge/pwn --secret [SECRET_ARG]
-
-SECRET_ARG should be "QHDSiIgg"
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
-Processing...
-Correct! Passing secret value to /challenge/college...
-Great job! Here is your flag:
-pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-hacker@piping~duplicating-piped-data-with-tee:~$ 
+hacker@piping~process-substitution-for-input:~$ diff <(/challenge/print_decoys) <(/challenge/print_decoys_and_flag)
+'42a43
+> pwn.college{Eh46G_zi-lJ6FSFjvMFWzebmk8-.0lNwMDOxwyM0AzNzEzW}
+hacker@piping~process-substitution-for-input:~$ 
 ```
 ## What I learned
-To use the tee attribute while piping.
-### Challenge 10:
-  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
- ``` 
-hacker@piping~duplicating-piped-data-with-tee:~$ touch file
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
-Processing...
-WARNING: you are overwriting file file with tee's output...
-The input to 'college' does not contain the correct secret code! This code 
-should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
-output of 'pwn' and figure out what the code needs to be.
-hacker@piping~duplicating-piped-data-with-tee:~$ cat file
-Usage: /challenge/pwn --secret [SECRET_ARG]
-
-SECRET_ARG should be "QHDSiIgg"
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
-Processing...
-Correct! Passing secret value to /challenge/college...
-Great job! Here is your flag:
-pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-hacker@piping~duplicating-piped-data-with-tee:~$ 
-```
-## What I learned
-To use the tee attribute while piping.
-### Challenge 10:
-  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
- ``` 
-hacker@piping~duplicating-piped-data-with-tee:~$ touch file
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
-Processing...
-WARNING: you are overwriting file file with tee's output...
-The input to 'college' does not contain the correct secret code! This code 
-should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
-output of 'pwn' and figure out what the code needs to be.
-hacker@piping~duplicating-piped-data-with-tee:~$ cat file
-Usage: /challenge/pwn --secret [SECRET_ARG]
-
-SECRET_ARG should be "QHDSiIgg"
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
-Processing...
-Correct! Passing secret value to /challenge/college...
-Great job! Here is your flag:
-pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-hacker@piping~duplicating-piped-data-with-tee:~$ 
-```
-## What I learned
-To use the tee attribute while piping.
-### Challenge 10:
-  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
- ``` 
-hacker@piping~duplicating-piped-data-with-tee:~$ touch file
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
-Processing...
-WARNING: you are overwriting file file with tee's output...
-The input to 'college' does not contain the correct secret code! This code 
-should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
-output of 'pwn' and figure out what the code needs to be.
-hacker@piping~duplicating-piped-data-with-tee:~$ cat file
-Usage: /challenge/pwn --secret [SECRET_ARG]
-
-SECRET_ARG should be "QHDSiIgg"
-hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
-Processing...
-Correct! Passing secret value to /challenge/college...
-Great job! Here is your flag:
-pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
-hacker@piping~duplicating-piped-data-with-tee:~$ 
-```
-## What I learned
-To use the tee attribute while piping.
-
-## References
-None
-
+To use the <(command) attribute to convert outputs of commands to files so as to use them in file related commands(process substitutions).
