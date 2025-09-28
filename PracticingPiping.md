@@ -184,44 +184,170 @@ hacker@piping~grepping-live-output:~$
 The use of | in Linux.
 
 ### Challenge 8:
-  **Flag**  pwn.college{g6Zn-sjhpXOuP7zpL_m9Pq6Oayq.0FN0EzNxwyM0AzNzEzW}
-Using the tab key to complete a filename instead of typing it full.
+  **Flag**  pwn.college{YR8Vg_0rjB_OpODuFtGLmj8hf_N.QX1ATO0wyM0AzNzEzW}
+Using the >& operator to convert standard error to standard output so as to use the grep command directly on errors.
  ``` 
-hacker@globbing~tab-completion:~$ cd /challenge
-hacker@globbing~tab-completion:/challenge$ ls
-DESCRIPTION.md  pwncollege​
-hacker@globbing~tab-completion:/challenge$ cat pwncollege​ 
-pwn.college{g6Zn-sjhpXOuP7zpL_m9Pq6Oayq.0FN0EzNxwyM0AzNzEzW}
-hacker@globbing~tab-completion:/challenge$ 
+hacker@piping~grepping-errors:~$ /challenge/run 2>&1 | grep "pwn"
+[INFO] WELCOME! This challenge makes the following asks of you:
+[INFO] - the challenge checks for a specific process at the other end of stderr : grep
+[INFO] - the challenge will output a reward file if all the tests pass : /challenge/.data.txt
+
+[HYPE] ONWARDS TO GREATNESS!
+
+[INFO] This challenge will perform a bunch of checks.
+[INFO] If you pass these checks, you will receive the /challenge/.data.txt file.
+
+[TEST] You should have redirected my stderr to another process. Checking...
+[TEST] Performing checks on that process!
+
+[INFO] The process' executable is /nix/store/8b4vn1iyn6kqiisjvlmv67d1c0p3j6wj-gnugrep-3.11/bin/grep.
+[INFO] This might be different than expected because of symbolic links (for example, from /usr/bin/python to /usr/bin/python3 to /usr/bin/python3.8).
+[INFO] To pass the checks, the executable must be grep.
+
+[PASS] You have passed the checks on the process on the other end of my stderr!
+[PASS] Success! You have satisfied all execution requirements.
+pwn.college{YR8Vg_0rjB_OpODuFtGLmj8hf_N.QX1ATO0wyM0AzNzEzW}
+pwning
+pwned
+pwn
+pwns
+hacker@piping~grepping-errors:~$ 
 ```
 ## What I learned
-Using the tab key instead of * to avoid accidental file calls.
+Using the >& operator in linux and to grep errors.
 
 ### Challenge 9:
-  **Flag**  pwn.college{QiaGMPb7jWHFlX9A2gGv2DCjCXc.0lN0EzNxwyM0AzNzEzW}
-Here we are using the tab key to complete the name of the file and we use it twice to see the whole list of files matching the pattern in case there are multiple files.
+  **Flag**  pwn.college{k6nzlXrxxuxeW6YkhzZVyZxmXRG.0FOxEzNxwyM0AzNzEzW}
+  Here we are using the grep with -v argument so as to get the results which do not contain the particular pattern we mention.
  ``` 
-hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwn
-pwn                    pwn-the-planet         pwncollege-flag        pwncollege-flyswatter  
-pwn-college            pwncollege-family      pwncollege-flamingo    pwncollege-hacking     
-hacker@globbing~multiple-options-for-tab-completion:~$ cat /challenge/files/pwncollege-flag
-pwn.college{QiaGMPb7jWHFlX9A2gGv2DCjCXc.0lN0EzNxwyM0AzNzEzW}
-hacker@globbing~multiple-options-for-tab-completion:~$ 
+hacker@piping~filtering-with-grep-v:~$ /challenge/run | grep -v "DECOY"
+pwn.college{k6nzlXrxxuxeW6YkhzZVyZxmXRG.0FOxEzNxwyM0AzNzEzW}
+hacker@piping~filtering-with-grep-v:~$ 
 ```
 ## What I learned
-The use of tab key to list muiltiple possible file names. 
+The use of -v attribute with the grep command.
 
 ### Challenge 10:
-  **Flag**  pwn.college{ENvdfF844YCfKsRlhzRxht-dtSM.0VN0EzNxwyM0AzNzEzW}
-Here we are using the tab key to complete a command. The tab key can be used to complete not just file names but also on commands.
+  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
  ``` 
-hacker@globbing~tab-completion-on-commands:~$ pwncollege-1444 
-Correct! Here is your flag:
-pwn.college{ENvdfF844YCfKsRlhzRxht-dtSM.0VN0EzNxwyM0AzNzEzW}
-hacker@globbing~tab-completion-on-commands:~$
+hacker@piping~duplicating-piped-data-with-tee:~$ touch file
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
+Processing...
+WARNING: you are overwriting file file with tee's output...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat file
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "QHDSiIgg"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ 
 ```
 ## What I learned
-To use tab key to complete commands
+To use the tee attribute while piping.
+
+### Challenge 10:
+  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
+ ``` 
+hacker@piping~duplicating-piped-data-with-tee:~$ touch file
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
+Processing...
+WARNING: you are overwriting file file with tee's output...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat file
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "QHDSiIgg"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ 
+```
+## What I learned
+To use the tee attribute while piping.
+### Challenge 10:
+  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
+ ``` 
+hacker@piping~duplicating-piped-data-with-tee:~$ touch file
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
+Processing...
+WARNING: you are overwriting file file with tee's output...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat file
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "QHDSiIgg"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ 
+```
+## What I learned
+To use the tee attribute while piping.
+### Challenge 10:
+  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
+ ``` 
+hacker@piping~duplicating-piped-data-with-tee:~$ touch file
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
+Processing...
+WARNING: you are overwriting file file with tee's output...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat file
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "QHDSiIgg"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ 
+```
+## What I learned
+To use the tee attribute while piping.
+### Challenge 10:
+  **Flag**  pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+Here we are using the pipe command and tee command to divert the output to a seperate file and read out the secret code which leads to the flag.
+ ``` 
+hacker@piping~duplicating-piped-data-with-tee:~$ touch file
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn |tee file |  /challenge/college
+Processing...
+WARNING: you are overwriting file file with tee's output...
+The input to 'college' does not contain the correct secret code! This code 
+should be provided by the 'pwn' command. HINT: use 'tee' to intercept the 
+output of 'pwn' and figure out what the code needs to be.
+hacker@piping~duplicating-piped-data-with-tee:~$ cat file
+Usage: /challenge/pwn --secret [SECRET_ARG]
+
+SECRET_ARG should be "QHDSiIgg"
+hacker@piping~duplicating-piped-data-with-tee:~$ /challenge/pwn --secret QHDSiIgg | /challenge/college
+Processing...
+Correct! Passing secret value to /challenge/college...
+Great job! Here is your flag:
+pwn.college{QHDSiIggE7RcP9m7OSmxbXbAqNy.QXxITO0wyM0AzNzEzW}
+hacker@piping~duplicating-piped-data-with-tee:~$ 
+```
+## What I learned
+To use the tee attribute while piping.
 
 ## References
 None
