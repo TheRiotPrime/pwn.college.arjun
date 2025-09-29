@@ -263,3 +263,58 @@ hacker@piping~process-substitution-for-input:~$
 ```
 ## What I learned
 To use the <(command) attribute to convert outputs of commands to files so as to use them in file related commands(process substitutions).
+
+### Challenge 12:
+  **Flag**  pwn.college{crjVzNGGbBleP8FTcNffOgQH7Qh.QXwgDN1wyM0AzNzEzW}
+  Here we are using the >(command) to using process substitution writing into commands.Here we are running the /challenge/hack and the output is duplicated using the tee attribute into two other programs.
+ ``` 
+hacker@piping~writing-to-multiple-programs:~$ /challenge/hack | tee >(/challenge/the) >(/challenge/planet)
+This secret data must directly and simultaneously make it to /challenge/the and 
+/challenge/planet. Don't try to copy-paste it; it changes too fast.
+250699240244872051
+Congratulations, you have duplicated data into the input of two programs! Here 
+is your flag:
+pwn.college{crjVzNGGbBleP8FTcNffOgQH7Qh.QXwgDN1wyM0AzNzEzW}
+hacker@piping~writing-to-multiple-programs:~$ 
+```
+## What I learned
+To use the >(command) attribute to write into commands and use the process substitution.
+
+### Challenge 13:
+  **Flag**  pwn.college{0fiScASeyGs2PqwIx_TxGZJh4rb.QXxQDM2wyM0AzNzEzW}
+Here we are running the program /challenge/hack and then the output is piped in to /challenge/planet as standard output and into /challenge/the as the standard error.
+ ``` 
+hacker@piping~split-piping-stderr-and-stdout:~$ /challenge/hack > >(/challenge/planet) 2> >(/challenge/the)
+Congratulations, you have learned a redirection technique that even experts 
+struggle with! Here is your flag:
+pwn.college{0fiScASeyGs2PqwIx_TxGZJh4rb.QXxQDM2wyM0AzNzEzW}
+hacker@piping~split-piping-stderr-and-stdout:~$ 
+```
+## What I learned
+To use the <(), | and FD together to achieve requirements in Linux.
+
+### Challenge 14:
+  **Flag**  pwn.college{Uw_P-WoQeyQlUQvrUKJP36a0ugd.01MzMDOxwyM0AzNzEzW}
+Here we are using the mkfifpo command to create named pipes called FIFO's There can be used directly to pipe and they have some advantages.
+ ```
+hacker@piping~named-pipes:~$ mkfifo /tmp/flag_fifo
+hacker@piping~named-pipes:~$ /challenge/run > /tmp/flag_fifo 
+You're successfully redirecting /challenge/run to a FIFO at /tmp/flag_fifo! 
+Bash will now try to open the FIFO for writing, to pass it as the stdout of 
+/challenge/run. Recall that operations on FIFOs will *block* until both the 
+read side and the write side is open, so /challenge/run will not actually be 
+launched until you start reading from the FIFO!
+hacker@piping~named-pipes:~$
+
+hacker@piping~named-pipes:~$ cat /tmp/flag_fifo
+You've correctly redirected /challenge/run's stdout to a FIFO at 
+/tmp/flag_fifo! Here is your flag:
+pwn.college{Uw_P-WoQeyQlUQvrUKJP36a0ugd.01MzMDOxwyM0AzNzEzW}
+hacker@piping~named-pipes:~$ 
+
+```
+## What I learned
+To create FIFO's using the mkfifo command.
+
+## References
+None
