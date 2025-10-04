@@ -1,5 +1,4 @@
 # Linux Luminarium- Data Manipulation 
-The challenge helps to get familiar with useful and important Linux commands.
 
 ## My solve
 ### Challenge 1:
