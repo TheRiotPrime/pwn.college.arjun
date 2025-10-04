@@ -1,4 +1,4 @@
-# Linux Luminarium- ZShell Variables
+# Linux Luminarium- Shell Variables
 
 ## My solve
 ### Challenge 1:
