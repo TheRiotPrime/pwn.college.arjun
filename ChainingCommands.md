@@ -1,4 +1,4 @@
-# Linux Luminarium- Practising Piping
+# Linux Luminarium- Chaining Commands
 
 ## My solve
 ### Challenge 1:
